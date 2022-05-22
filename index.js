@@ -39,10 +39,9 @@ app.get("/", async (request, response) => {
   response.writeHead(200, {
     "Content-Type": "text/plain",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
   });
 
-  response.status(200).send(getAllTheProducts);
+  response.send(getAllTheProducts);
 });
 
 const PORT = process.env.PORT || 8000;
