@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
 const products = require("./Models/productDetails");
+var cors = require("cors");
+
+app.use(cors());
 
 function connectDatabase() {
   const DatabaseConnection = mongoose.connect(
