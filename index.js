@@ -27,6 +27,11 @@ app.get("/", async (request, response) => {
   if (process.env.NODE_ENV !== "production") {
     console.log(getAllTheProducts);
   }
+  response.writeHead(200, {
+    "Content-Type": "text/plain",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE",
+  });
 
   response.status(200).send(getAllTheProducts);
 });
