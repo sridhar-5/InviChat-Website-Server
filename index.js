@@ -7,7 +7,7 @@ const products = require("./Models/productDetails");
 var cors = require("cors");
 
 const postSellers = require("./routes/createSellers.js");
-
+const findSeller = require("./routes/checkSellerExists.js");
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
@@ -32,6 +32,7 @@ function connectDatabase() {
 
 connectDatabase();
 app.use("/api/createSeller", postSellers);
+app.use("/api/checkSellerExists", findSeller);
 
 app.use(express.json());
 
