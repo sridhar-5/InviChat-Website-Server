@@ -15,6 +15,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(express.json());
 
 function connectDatabase() {
   const DatabaseConnection = mongoose.connect(
