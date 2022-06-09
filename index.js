@@ -6,6 +6,8 @@ dotenv.config();
 const products = require("./Models/productDetails");
 var cors = require("cors");
 
+const postSellers = require("./routes/createSellers.js");
+
 const corsOptions = {
   origin: "*",
   credentials: true, //access-control-allow-credentials:true
@@ -28,16 +30,12 @@ function connectDatabase() {
 }
 
 connectDatabase();
+app.use("/api/createSeller", postSellers);
 
 app.use(express.json());
 
 app.get("/", async (request, response) => {
-  const getAllTheProducts = await products.find({});
-  if (process.env.NODE_ENV !== "production") {
-    console.log(getAllTheProducts);
-  }
-
-  response.send(getAllTheProducts);
+  response.send("Hello..! Welcome to the demo server of Invichat Website");
 });
 
 const PORT = process.env.PORT || 8000;
