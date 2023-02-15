@@ -12,4 +12,12 @@ router.get("/", async (request, response) => {
   response.send(getAllTheProducts);
 });
 
+router.delete("/:id", async (request, response) => {
+  const deleteProduct = await products.findByIdAndDelete(request.params.id);
+  if (process.env.NODE_ENV !== "production") {
+    console.log(deleteProduct);
+  }
+  response.send(deleteProduct);
+});
+
 module.exports = router;

@@ -17,6 +17,10 @@ const sellerSchema = new mongoose.Schema({
     minlength: 10,
     maxlength: 10,
   },
+  password: {
+    type: String,
+    required: true,
+  },
 });
 
 const sellerModel = mongoose.model("seller", sellerSchema);
