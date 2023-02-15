@@ -13,7 +13,7 @@ router.get("/", async (request, response) => {
 });
 
 router.delete("/:id", async (request, response) => {
-  const deleteProduct = await products.findByIdAndDelete(request.params.id);
+  const deleteProduct = await products.find({ productId: request.params.id });
   if (process.env.NODE_ENV !== "production") {
     console.log(deleteProduct);
   }
