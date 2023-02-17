@@ -41,7 +41,7 @@ app.get("/", async (request, response) => {
   response.send("Hello..! Welcome to the demo server of Invichat Website");
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
   console.log(`server started on ${PORT}`);
