@@ -113,8 +113,12 @@ router.get("/category-income-analysis", async (request, response) => {
     }
   }
   const responseFormat = [];
+  var totalValue = 0;
   for (const [key, value] of Object.entries(sales)) {
-    responseFormat.push({ type: key, sales: value });
+    totalValue += value;
+  }
+  for (const [key, value] of Object.entries(sales)) {
+    responseFormat.push({ type: key, sales: (value / totalValue) * 100 });
   }
   response.send(responseFormat);
 });
