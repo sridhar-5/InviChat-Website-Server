@@ -35,6 +35,7 @@ connectDatabase();
 app.use("/api/createSeller", postSellers);
 app.use("/api/checkSellerExists", findSeller);
 app.use("/products", findProd);
+app.use("/product/analytics", require("./routes/productAnalytics.js"));
 app.use(express.json());
 
 app.get("/", async (request, response) => {

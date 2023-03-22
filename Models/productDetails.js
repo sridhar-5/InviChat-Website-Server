@@ -9,6 +9,7 @@ const product = new mongoose.Schema({
   productImages: [String],
   Owner: String,
   productId: Number,
+  Category: String,
 });
 
 const ProductModel = mongoose.model("products", product);
