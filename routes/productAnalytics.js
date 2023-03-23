@@ -118,7 +118,7 @@ router.get("/category-income-analysis", async (request, response) => {
     totalValue += value;
   }
   for (const [key, value] of Object.entries(sales)) {
-    responseFormat.push({ type: key, sales: (value / totalValue) * 100 });
+    responseFormat.push({ type: key, value: (value / totalValue) * 100 });
   }
   response.send(responseFormat);
 });
