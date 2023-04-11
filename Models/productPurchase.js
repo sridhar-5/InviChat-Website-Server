@@ -6,6 +6,17 @@ const productPurchase = new mongoose.Schema({
   purchaseMonth: String,
   purchaseYear: String,
   productPrice: Number,
+  status: {
+    type: String,
+    enum: [
+      "order_placed",
+      "dispatched",
+      "out_for_delivery",
+      "delivered",
+      "cancelled",
+    ],
+    default: "order_placed",
+  },
 });
 
 const ProductPurchaseModel = mongoose.model(
