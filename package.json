@@ -17,6 +17,7 @@
     "random-date-generator": "^1.0.2"
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "nodemon": "^2.0.22"
   }
 }
