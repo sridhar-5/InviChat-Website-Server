@@ -9,11 +9,26 @@ const productPurchase = require("../Models/productPurchase");
 
 router.get("/", async (request, response) => {
   const getAllTheProducts = await products.find({});
-  if (process.env.NODE_ENV !== "production") {
-    console.log(getAllTheProducts);
-  }
+  // if (process.env.NODE_ENV !== "production") {
+  //   console.log(getAllTheProducts);
+  // }
+  let count = 0;
+  var responseData = [];
 
-  response.send(getAllTheProducts);
+  getAllTheProducts.forEach((product) => {
+    responseData.push({
+      key: count++,
+      name: product.productName,
+      description: product.productDescription,
+      price: product.productPrice,
+      quantity: product.productQuantity,
+      owner: product.Owner,
+      category: [product.Category],
+      productId: product.productId,
+    });
+  });
+
+  response.send(responseData);
 });
 
 // create a new product
@@ -46,17 +61,19 @@ router.post("/", async (request, response) => {
 //edit product details
 router.patch("/:id", async (request, response) => {
   const requestBody = request.body;
+  console.log(request.body);
   const updateProduct = await products.findOneAndUpdate(
     { productId: request.params.id },
-    requestBody,
+    { $set: requestBody },
     { new: true }
   );
+  console.log(updateProduct);
   response.status(200).send(updateProduct);
 });
 
 router.delete("/:id", async (request, response) => {
   const deleteProduct = await products.findOneAndDelete({
-    productId: request.params.id,
+    productId: parseInt(request.params.id),
   });
   if (process.env.NODE_ENV !== "production") {
     console.log(deleteProduct);

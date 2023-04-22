@@ -104,6 +104,7 @@ router.get("/category-income-analysis", async (request, response) => {
   const sales = {};
   for (const purchase of purchases) {
     const prod = await Product.find({ productId: purchase.productId });
+    console.log(prod, purchase.productId);
     const prodCat = prod[0].Category;
 
     if (prodCat in sales) {

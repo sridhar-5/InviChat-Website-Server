@@ -37,6 +37,7 @@ app.use("/api/checkSellerExists", findSeller);
 app.use("/products", findProd);
 app.use("/product/analytics", require("./routes/productAnalytics.js"));
 app.use("/api/v1/sales", require("./routes/orders.js"));
+app.use("/api/v1/users", require("./routes/users.js"));
 app.use(express.json());
 
 app.get("/", async (request, response) => {
